@@ -1,6 +1,7 @@
 use mago_formatter::settings::FormatSettings;
 use mago_interner::ThreadedInterner;
 use mago_source::Source;
+use unicode_segmentation::UnicodeSegmentation;
 
 const ATTRIBUTE_PREFIX: &str = "<?php ";
 const ATTRIBUTE_SUFFIX: &str = "\nfunction dummy()\n{\n}";
@@ -38,14 +39,15 @@ fn main() -> std::io::Result<()> {
                 }
 
                 mago_formatter::format(&interner, &source, &program, FormatSettings::default())
-                    .chars()
+                    .to_string()
+                    .graphemes(true)
                     .skip(ATTRIBUTE_PREFIX.len())
                     .collect::<String>()
-                    .chars()
+                    .graphemes(true)
                     .rev()
                     .skip(ATTRIBUTE_SUFFIX.len())
                     .collect::<String>()
-                    .chars()
+                    .graphemes(true)
                     .rev()
                     .collect::<String>()
                     .lines()
