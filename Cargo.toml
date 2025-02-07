@@ -1,0 +1,12 @@
+[package]
+name = "php-attributes-formatter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mago-parser = "0.9.0"
+mago-interner = "0.9.0"
+mago-source = "0.9.0"
+mago-formatter = "0.9.0"
+mago-ast = "0.9.0"
+mago-lexer = "0.9.0"

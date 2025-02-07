@@ -1,0 +1,3 @@
+[submodule "fennec"]
+	path = fennec
+	url = git@github.com:carthage-software/fennec.git
